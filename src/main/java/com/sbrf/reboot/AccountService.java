@@ -10,10 +10,13 @@ public class AccountService {
         accountRepository.setAllAccounts(new Account(accountName));
     }
 
-    public boolean isAccountExists(long l, Account account) {
+    public boolean isAccountExists(Account account) {
         boolean result = false;
         for (Account s : this.accountRepository.getAllAccounts()) {
-            result = s.accountName.equals(account.accountName);
+            if (s.getAccountName().equals(account.getAccountName())) {
+                result = true;
+                break;
+            }
         }
         return result;
     }

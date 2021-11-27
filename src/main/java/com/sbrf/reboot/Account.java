@@ -4,7 +4,13 @@ import lombok.Data;
 
 @Data
 public class Account {
-    String accountName;
+
+    public String getAccountName() {
+        return accountName;
+    }
+
+    private String accountName;
+
 
     public Account(String accountName) {
         this.accountName = accountName;

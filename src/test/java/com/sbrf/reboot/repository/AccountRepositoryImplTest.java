@@ -1,10 +1,8 @@
 package com.sbrf.reboot.repository;
-
 import com.sbrf.reboot.AccountRepository;
 import com.sbrf.reboot.AccountRepositoryImpl;
 import com.sbrf.reboot.Account;
 import org.junit.jupiter.api.Test;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AccountRepositoryImplTest {
 
     AccountRepository accountRepository;
+    AccountRepositoryImpl accountRepositoryImpl;
 
     @Test
     void onlyPersonalAccounts() throws IOException {
@@ -46,5 +45,19 @@ class AccountRepositoryImplTest {
         });
     }
 
+    @Test
+    void setAccountIdInFile() throws IOException {
+        accountRepositoryImpl = new AccountRepositoryImpl("src/main/resources/Accounts.txt");
+        accountRepositoryImpl.setAccountInFile(1, "1-ACCNUM", "777-ACCNUM");
+        Set<Account> allAccountsByClientId = accountRepositoryImpl.getAllAccountsByClientId(1);
 
+        ArrayList<String> strings = new ArrayList<String>() {{
+            add("2-ACCNUM");
+            add("777-ACCNUM");
+            add("4-ACC1NUM");
+        }};
+
+        allAccountsByClientId.forEach(e -> assertTrue(strings.contains(e.getNumber())));
+        accountRepositoryImpl.setAccountInFile(1, "777-ACCNUM", "1-ACCNUM");
+    }
 }

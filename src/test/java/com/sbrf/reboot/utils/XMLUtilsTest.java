@@ -1,8 +1,9 @@
 package com.sbrf.reboot.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.sbrf.reboot.dto.Request;
-import com.sbrf.reboot.dto.Response;
+import com.sbrf.reboot.Request;
+import com.sbrf.reboot.Response;
+import com.sbrf.reboot.XMLUtils;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

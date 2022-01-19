@@ -1,13 +1,13 @@
 package com.sbrf.reboot;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Cassette {
-    private ArrayList valueList;
+    private final List<? extends Banknote> valueList;
 
-    public Cassette(ArrayList<? extends Banknote> valueList) {
-            this.valueList = valueList;
-        }
+    public Cassette(List<? extends Banknote> valueList) {
+        this.valueList = valueList;
+    }
 
     public int getCountBanknotes(){
         return valueList.size();
@@ -15,3 +15,4 @@ public class Cassette {
 
 
 }
+
